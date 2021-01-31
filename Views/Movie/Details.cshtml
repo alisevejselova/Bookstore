@@ -1,0 +1,33 @@
+@model Bookstore.Models.Movie
+
+@{
+    ViewData["Title"] = "Детали";
+    var photoPath = "~/pictures/" + (Model.Picture);
+}
+
+
+<div style="text-align: left;">
+    <span style="float:right;">
+        <img src="@photoPath"
+             height="300" width="180"
+             asp-append-version="true" />
+        <p>@Html.DisplayFor(model => model.Rating)</p>
+    </span>
+    <p style="text-align: center; font-size: larger; font-weight:bold;"> @Html.DisplayFor(model => model.Title)</p>
+    <p>
+        <strong>Снимен според: </strong> <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.BookId">
+            @Html.DisplayFor(model => model.Book.Title)
+        </a>
+    </p>
+    <p> <strong>Дата на излегување: </strong>@Html.DisplayFor(model => model.ReleaseDate)</p>
+    <p> @Html.DisplayFor(model => model.Synopsis)</p>
+    <iframe src="@Model.Trailer" width="560" height="315" frameborder="0" allowfullscreen></iframe> </p>
+
+</div>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.MovieID">Измени</a> |
+        <a asp-action="Index">Назад</a>
+    </div>
+}

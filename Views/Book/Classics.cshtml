@@ -1,0 +1,78 @@
+@model IEnumerable<Bookstore.Models.Book>
+    @{
+    ViewData["Title"] = "Класици";
+}
+ <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-black border-bottom box-shadow mb-3" style="background-color: black;">
+            <div class="container" style="background-color: black;" >
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" style="background-color: black;">
+                    <ul class="navbar-nav flex-grow-1"style="background-color: black;">
+                        <li class="nav-item">
+                           <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;" 
+                           asp-area="" asp-controller="Book" asp-action="Thriller"><div style="color: white;">Трилер</div></a>
+                                </li>
+                                &ensp;
+                                <li class="nav-item" >                                                             
+                                 <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;"  
+                                 asp-area="" asp-controller="Book" asp-action="Mystery"><div style="color: white;">Мистерија</div></a>
+                                </li>   &ensp;
+                                <li class="nav-item" >                                                             
+                                 <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;" 
+                                  asp-area="" asp-controller="Book" asp-action="Comedy"><div style="color: white;">Комедија</div></a>
+                                </li>   &ensp;
+                                <li class="nav-item">
+                                <a class="nav-link text-dark"style="font-size:larger;font-weight:bold;" 
+                                asp-area="" asp-controller="Book" asp-action="Fantasy"><div style="color: white;">Фантазија</div></a>
+                                  </li>  &ensp;
+                                  <li class="nav-item">
+                                <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;" 
+                                 asp-area="" asp-controller="Book" asp-action="Novel"><div style="color: white;">Новела</div></a>
+                                 </li>  &ensp;
+                                 <li class="nav-item" >                                                             
+                                 <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;" 
+                                  asp-area="" asp-controller="Book" asp-action="Biography"><div style="color: white;">Биографија</div></a>
+                                </li>   &ensp; 
+                                <li class="nav-item" >                                                             
+                                 <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;" 
+                                  asp-area="" asp-controller="Book" asp-action="Classics"><div style="color: white;">Класици</div></a>
+                                </li>  &ensp;
+                                <li class="nav-item" >                                                             
+                                 <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;" 
+                                 asp-area="" asp-controller="Book" asp-action="Mythology"><div style="color: white;">Митологија</div></a>
+                                </li>  &ensp;                               
+                                <li class="nav-item" >                                                             
+                                 <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;" 
+                                 asp-area="" asp-controller="Book" asp-action="Poetry"> <div style="color: white;">Поезија</div></a>
+                                </li>                           
+                        </ul>
+                </div>
+            </div>
+        </nav>
+<div style="text-align: center;">
+                <h2>Класици</h2>
+</div>
+
+@foreach(var item in Model)
+{
+            @if(item.Genre=="Класици")
+            {
+<div style="text-align: center;">
+    <img src="~/pictures/@item.Picture"
+         height="240" width="150"
+         asp-append-version="true" />
+
+    <p> <a asp-action="Details" asp-route-id="@item.BooksID"> @Html.DisplayFor(modelItem => item.Title) </a></p>
+
+    <p> @Html.DisplayFor(modelItem => item.Price) денари</p>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+
+        <p>
+            <a asp-action="Edit" asp-route-id="@item.BooksID">Измени</a> |
+            <a asp-action="Delete" asp-route-id="@item.BooksID">Избриши</a>
+        </p>
+    }
+
+    </div>  
+            } 
+    
+        }

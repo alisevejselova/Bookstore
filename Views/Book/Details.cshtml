@@ -1,0 +1,102 @@
+@model Bookstore.Models.Book
+
+@{
+    ViewData["Title"] = "Детали";
+    var photoPath = "~/pictures/" + (Model.Picture);
+}
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-black border-bottom box-shadow mb-3" style="background-color: black;">
+    <div class="container" style="background-color: black;">
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" style="background-color: black;">
+            <ul class="navbar-nav flex-grow-1" style="background-color: black;">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;"
+                       asp-area="" asp-controller="Book" asp-action="Thriller"><div style="color: white;">Трилер</div></a>
+                </li>
+                &ensp;
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;"
+                       asp-area="" asp-controller="Book" asp-action="Mystery"><div style="color: white;">Мистерија</div></a>
+                </li>   &ensp;
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;"
+                       asp-area="" asp-controller="Book" asp-action="Comedy"><div style="color: white;">Комедија</div></a>
+                </li>   &ensp;
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;"
+                       asp-area="" asp-controller="Book" asp-action="Fantasy"><div style="color: white;">Фантазија</div></a>
+                </li>  &ensp;
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;"
+                       asp-area="" asp-controller="Book" asp-action="Novel"><div style="color: white;">Новела</div></a>
+                </li>  &ensp;
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;"
+                       asp-area="" asp-controller="Book" asp-action="Biography"><div style="color: white;">Биографија</div></a>
+                </li>   &ensp;
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;"
+                       asp-area="" asp-controller="Book" asp-action="Classics"><div style="color: white;">Класици</div></a>
+                </li>  &ensp;
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;"
+                       asp-area="" asp-controller="Book" asp-action="Mythology"><div style="color: white;">Митологија</div></a>
+                </li>  &ensp;
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-size:larger;font-weight:bold;"
+                       asp-area="" asp-controller="Book" asp-action="Poetry"> <div style="color: white;">Поезија</div></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div style="text-align: left;">
+    <span style="float:right;">
+        <img src="@photoPath"
+             height="300" width="180"
+             asp-append-version="true" />
+        <p>
+            @Html.DisplayFor(model => model.ReleaseDate) &ensp;
+            @Html.DisplayFor(model => model.Publisher)
+        </p>
+        <p><strong>Цена: </strong>@Html.DisplayFor(model => model.Price) денари</p>
+    </span>
+    <p style="text-align: center; font-size: larger; font-weight:bold;">@Html.DisplayFor(model => model.Title)</p>
+    <p>
+        <strong>Автор:</strong> <a asp-controller="Author" asp-action="Details" asp-route-id="@Model.Authorid">
+            @Html.DisplayFor(model => model.Author.FullName)
+        </a>
+    </p>
+
+    <p>
+        <strong>Оригинален наслов:</strong>  @Html.DisplayFor(model => model.OriginalTitle) &ensp;
+        <strong>Број на страни: </strong>@Html.DisplayFor(model => model.NumberofPages)
+    </p>
+    <p>@Html.DisplayFor(model => model.Synopsis)</p>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>
+            <button class="btn btn-default" type="submit" style="box-sizing: border-box; background-color: orange; ">
+                <a style="font-weight: bold; color: white;" asp-action="Order" asp-route-id="@Model.BooksID">Порачај</a>
+            </button>
+        </p>
+    }
+    else
+    {
+        <p>
+            <button class="btn btn-default" type="submit" style="box-sizing: border-box; background-color: orange; ">
+                <a style="font-weight: bold; color: white;" asp-controller="Account" asp-action="Login" >Порачај</a>
+            </button>
+        </p>
+
+    }
+</div>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.BooksID">Измени</a> |
+        
+        <a asp-action="Index">Назад</a>
+    </div>
+}

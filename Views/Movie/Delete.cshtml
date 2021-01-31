@@ -1,0 +1,63 @@
+@model Bookstore.Models.Movie
+
+@{
+    ViewData["Title"] = "Избриши";
+}
+
+<h1>Избриши</h1>
+
+<h3>Дали сте сигурни дека сакате да избришете ?</h3>
+<div>
+   
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MovieID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MovieID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Book)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Book.Title)
+        </dd>
+         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Trailer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Trailer)
+        </dd>
+         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Synopsis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Synopsis)
+        </dd>
+         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+       <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="MovieID" />
+        <input type="submit" value="Избриши" class="btn btn-danger" /> |
+        <a asp-action="Index">Назад</a>
+    </form>
+</div>

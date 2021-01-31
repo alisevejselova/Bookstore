@@ -1,0 +1,81 @@
+@model Bookstore.Models.Book
+
+@{
+    ViewData["Title"] = "Избриши";
+}
+
+<h1>Избриши</h1>
+
+<h3>Дали сте сигурни дека сакате да избришете ?</h3>
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BooksID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BooksID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OriginalTitle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OriginalTitle)
+        </dd>
+         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Synopsis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Synopsis)
+        </dd>
+         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NumberofPages)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumberofPages)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+          <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Publisher)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Publisher)
+        </dd>
+          <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Author.FullName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="BooksID" />
+        <input type="submit" value="Избриши" class="btn btn-danger" /> |
+        <a asp-action="Index">Назад</a>
+    </form>
+</div>
