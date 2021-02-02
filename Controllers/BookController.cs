@@ -306,7 +306,8 @@ namespace Bookstore.Controllers
         
         public IActionResult Order(int id)
         {
-            TempData["ID"] = id;
+            // TempData["ID"] = id;
+            ViewData["BookID"] = _context.Book.Where(t => t.BooksID == id).Select(t => t.BooksID).FirstOrDefault();
             ViewData["BookName"] = _context.Book.Where(t => t.BooksID == id).Select(t => t.Title).FirstOrDefault();
             ViewData["BookPrice"] = _context.Book.Where(t => t.BooksID == id).Select(t => t.Price).FirstOrDefault();
             string imageURL = "~/pictures/" + _context.Book.Where(t => t.BooksID == id).Select(t => t.Picture).FirstOrDefault();
@@ -316,7 +317,7 @@ namespace Bookstore.Controllers
  
          [HttpPost]
            [ValidateAntiForgeryToken]
-         public async Task<IActionResult> Order([Bind("FullName, PhoneNumber, Address, City, BookTitle")] User order)
+         public async Task<IActionResult> Order([Bind("FullName, PhoneNumber, Address, City,BooksID, BookTitle")] User order)
          {
             if (ModelState.IsValid)
              {

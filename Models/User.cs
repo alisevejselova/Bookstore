@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Bookstore.Models
 {
@@ -35,5 +36,10 @@ namespace Bookstore.Models
 
         [Display(Name = "Книга")]
         public string BookTitle { get; set; }
+        
+        [Display(Name = "ID Книга")]
+        public int BooksID { get; set; }
+        [ForeignKey("BooksID")]
+         public Book Book { get; set; }
     }
 }

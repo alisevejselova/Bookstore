@@ -20,7 +20,7 @@ namespace Bookstore.Data
         public DbSet<Author> Author { get; set; }
         public DbSet<AppUser> AppUser{ get; set; }
         public DbSet<User> User{ get; set; }
-        public DbSet<OrderItem> OrderItem { get; set; }
+     
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,7 +30,7 @@ namespace Bookstore.Data
             .HasForeignKey(b => b.Authorid).OnDelete(DeleteBehavior.NoAction);
             
              modelBuilder.Entity<Author>().ToTable("Author");
-            modelBuilder.Entity<OrderItem>().ToTable("OrderItem");
+           
 
             modelBuilder.Entity<Movie>().ToTable("Movie")
               .HasOne(b => b.Book)
