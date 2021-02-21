@@ -265,7 +265,7 @@ namespace Bookstore.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["BookName"] = _context.Book.Where(t => t.BooksID == id).Select(t => t.Title).FirstOrDefault();
             return View(book);
         }
 

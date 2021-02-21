@@ -3,11 +3,7 @@
 @{
     ViewData["Title"] = "Порачај";
 }
-@if (User.Identity.IsAuthenticated)
-{
-    <h4>Најавени сте како <strong> @(User.Identity.Name)</strong></h4>
-    
-    }
+
  <h3>Пополнете ги вашите податоци</h3>
 
 
@@ -17,7 +13,7 @@
     <img src="@ViewData["Image"]"
          height="180" width="100"
          asp-append-version="true" />
-    <h5>  @ViewData["BookPrice"]  денари</h5>
+    <h5>  @ViewData["BookPrice"]  денари </h5>
     <br />
     <div class="row">
         <div class="col-md-4">

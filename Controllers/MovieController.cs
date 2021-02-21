@@ -187,7 +187,7 @@ namespace Bookstore.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["Movie"] = _context.Movie.Where(t => t.MovieID == id).Select(t => t.Title).FirstOrDefault();
             return View(movie);
         }
 

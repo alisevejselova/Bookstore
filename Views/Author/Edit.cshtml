@@ -4,15 +4,15 @@
     ViewData["Title"] = "Измени";
 }
 
-<h1>Измени</h1>
+    <h1>Измени автор</h1>
 
-<h4>Автор</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit" enctype="multipart/form-data" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Picture" class="control-label"></label>
                 <div class="custom-file">
                     <input asp-for=" Picture" type="file" class="custom-file-input" id="customFile">
@@ -30,33 +30,33 @@
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="DateofBirth" class="control-label"></label>
                 <input asp-for="DateofBirth" class="form-control" />
                 <span asp-validation-for="DateofBirth" class="text-danger"></span>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="DateofDeath" class="control-label"></label>
                 <input asp-for="DateofDeath" class="form-control" />
                 <span asp-validation-for="DateofDeath" class="text-danger"></span>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Biography" class="control-label"></label>
                 <input asp-for="Biography" class="form-control" />
                 <span asp-validation-for="Biography" class="text-danger"></span>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Rewards" class="control-label"></label>
                 <input asp-for="Rewards" class="form-control" />
-                     <span asp-validation-for="Rewards" class="text-danger"></span>
+                <span asp-validation-for="Rewards" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Books" class="control-label"></label>
-                <input asp-for="Books" class="form-control" />
-                     <span asp-validation-for="Books" class="text-danger"></span>
-            </div>
-            
-           
+            @*       <div class="form-group">
+            <label asp-for="Books" class="control-label"></label>
+            <input asp-for="Books" class="form-control" />
+                 <span asp-validation-for="Books" class="text-danger"></span>
+        </div>*@
+
+
             <div class="form-group">
                 <input type="submit" value="Измени" class="btn btn-primary" />
             </div>

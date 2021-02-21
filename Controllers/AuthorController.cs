@@ -200,7 +200,7 @@ namespace Bookstore.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["AuthorName"] = _context.Author.Where(t => t.AuthorID == id).Select(t => t.FullName).FirstOrDefault();
             return View(author);
         }
 

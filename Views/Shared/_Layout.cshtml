@@ -61,13 +61,13 @@
                 @if (User.Identity.IsAuthenticated)
                 {
 
-                <strong> Најавен: @(User.Identity.Name)</strong> <a asp-area="" asp-controller="Account" asp-action="Logout"> Одјави се</a>
+                <strong> Најавен: @(User.Identity.Name)</strong> <a asp-area="" asp-controller="Account" asp-action="Logout"><strong> Одјави се </Strong></a>
       
     }
     else
     {
     <a asp-area="" asp-controller="Account" asp-action="Login">
-        Најави се
+        <strong> Најави се</strong>
     </a>
     }
 </span>
